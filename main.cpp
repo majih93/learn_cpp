@@ -98,7 +98,30 @@ int main() {
 
    new_text_t myName = "ji";
 
-   cout << myName;
+   cout << myName << endl;
+
+   // type conversion
+   // 명시적 타입 변환
+   // 암시적 타입 변환
+
+   int num = 3.14;
+   double numb = (int) 3.14;
+
+   cout << num << endl; // int타입으로 지정된 변수이기 때문에 소수점은 버리고 3만 출력된다.
+   cout << numb << endl; // 3이지만, 3.14를 int로 변환해서 double값에 할당하였음.
+
+   // 근데 이거를 언제 쓰냐?
+   // 예를 들어, 10개중에 몇개를 맞췄는지 퍼센티지를 표현한다고 해보자.
+   int correct = 8;
+   int total = 10;
+   double score = correct/total * 100;
+
+   cout << score << endl; // 그냥 correct/total을 하면 0이 출력된다 왜냐하면 int값 연산으로 처리되어 소수점이 버려지기 때문
+   // 이를 방지하기 위해서 하나를 double로 type conversion시켜준다.
+   double score_right = (double)correct/total * 100;
+   double score_right2 = correct/(double)total * 100;
+   cout << score_right << endl; // 80
+   cout << score_right2 << endl; // 80
 
    return 0;
 }
