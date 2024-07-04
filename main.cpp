@@ -123,6 +123,27 @@ int main() {
    cout << score_right << endl; // 80
    cout << score_right2 << endl; // 80
 
+   // 입력 받기
+   // 출력의 경우 cout함수에 출력값을 주입받는 형태로 cout << 출력값 으로 사용했지만,
+   // 입력의 경우 cin >> 형태로 사용한다. 내가 뭔가를 입력 받는다는 느낌으로 이해하면 될듯?
+   string user_name;
+   // cout << "이름을 입력하세요" << endl;
+   // cin >> user_name; // 입력값을 user_name변수에 할당
+   //
+   // cout << "Hello " << user_name << endl;
+
+   // whitespace가 포함된 문자열을 받으려면?
+   cout << "full name을 입력하세요:" << endl;
+   getline(cin, user_name);
+   cout << "Hello " << user_name << endl;
+
+   // 그런데 앞단에 cin으로 다른 값을 입력받은 상태에서, getline으로 값을 입력받으면 입력받은 값이 줄바꿈 처리되어서 입력된다.
+   // 이는 cin이 input buffer에 추가한 \n이 남아있어서 그런 것인데, 이로 인해서 getline을 이어서 하게되면 줄바꿈 처리가 된 이후에 값이 찍히는 것.
+
+   // 이런 상황을 방지하기 위해서는 getline에 입력값 앞에 존재하는 공백을 다 제거하는 처리가 필요하다.
+   // ws는 whitespace의 약자로, 입력 스트림에서 선행 공백 문자를 제거하는 역할을 한다.
+   getline(cin >> ws, user_name); // ws를 통해서 공백제거처리
+
    return 0;
 }
 
