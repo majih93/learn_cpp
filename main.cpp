@@ -42,6 +42,11 @@ typedef std::vector<std::pair<std::string,int>> pairlist_t;
 // 명시적으로 benefit이 있을때만 꼭 사용하라고 추천함
 using new_text_t = std::string;
 
+// 사용자 정의 함수
+// main함수 안에서 사용되기 때문에 이전에 선언은 되어야 하지만, 통상적으로 정의는 main함수 아래에 하는 것이 일반적이다.
+// 위에서 선언하고, 아래에서 정의한다
+void someUserDefinedFunction();
+
 int main() {
    const double result = floor(1.2);
    cout << result << endl; // 1
@@ -144,7 +149,16 @@ int main() {
    // ws는 whitespace의 약자로, 입력 스트림에서 선행 공백 문자를 제거하는 역할을 한다.
    getline(cin >> ws, user_name); // ws를 통해서 공백제거처리
 
+   // 사용자 지정함수
+   someUserDefinedFunction();
+
    return 0;
 }
 
-// 이렇게 작성한 코드를 실행하려면, 내가 작성한 코드를 Machine Code로 컴파일해야한다.(OS가 실행할 수 있도록.)
+// 선언한 사용자 정의 함수를 정의한다.
+void someUserDefinedFunction() {
+   cout << "MyFunction!" << endl;
+}
+
+
+
