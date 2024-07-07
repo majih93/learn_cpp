@@ -138,19 +138,38 @@ int main() {
    // cout << "Hello " << user_name << endl;
 
    // whitespace가 포함된 문자열을 받으려면?
-   cout << "full name을 입력하세요:" << endl;
-   getline(cin, user_name);
-   cout << "Hello " << user_name << endl;
-
-   // 그런데 앞단에 cin으로 다른 값을 입력받은 상태에서, getline으로 값을 입력받으면 입력받은 값이 줄바꿈 처리되어서 입력된다.
-   // 이는 cin이 input buffer에 추가한 \n이 남아있어서 그런 것인데, 이로 인해서 getline을 이어서 하게되면 줄바꿈 처리가 된 이후에 값이 찍히는 것.
-
-   // 이런 상황을 방지하기 위해서는 getline에 입력값 앞에 존재하는 공백을 다 제거하는 처리가 필요하다.
-   // ws는 whitespace의 약자로, 입력 스트림에서 선행 공백 문자를 제거하는 역할을 한다.
-   getline(cin >> ws, user_name); // ws를 통해서 공백제거처리
+   // cout << "full name을 입력하세요:" << endl;
+   // getline(cin, user_name);
+   // cout << "Hello " << user_name << endl;
+   //
+   // // 그런데 앞단에 cin으로 다른 값을 입력받은 상태에서, getline으로 값을 입력받으면 입력받은 값이 줄바꿈 처리되어서 입력된다.
+   // // 이는 cin이 input buffer에 추가한 \n이 남아있어서 그런 것인데, 이로 인해서 getline을 이어서 하게되면 줄바꿈 처리가 된 이후에 값이 찍히는 것.
+   //
+   // // 이런 상황을 방지하기 위해서는 getline에 입력값 앞에 존재하는 공백을 다 제거하는 처리가 필요하다.
+   // // ws는 whitespace의 약자로, 입력 스트림에서 선행 공백 문자를 제거하는 역할을 한다.
+   // getline(cin >> ws, user_name); // ws를 통해서 공백제거처리
 
    // 사용자 지정함수
    someUserDefinedFunction();
+
+   // 배열...!
+   // 타입이 같은 데이터만 담을 수 있음.
+   // 값이 없는 배열을 미리 선언할 수 있지만, 길이를 미리 지정해야 한다.
+   int intArray[3];
+
+   intArray[0] = 1;
+
+   cout << intArray << endl; // 0x16cfbb3ec -> 배열이 시작하는 지점의 메모리 주소(0번째 인덱스 주소)
+   cout << intArray[0] << endl; // 1
+   cout << intArray[1] << endl; // 아직 할당하지 않은 배열인덱스에 접근하면 garbage data가 반환됨.
+
+
+   // sizeof(); -> 피연산자의 데이터 크기를 구하는 함수
+   cout << sizeof(intArray) << endl; // 12 -> int가 하나에 4니까, 4*3해서 12
+   cout << sizeof(2) << endl; // 4
+   cout << sizeof("A") << endl; // 2
+   cout << sizeof("2.112") << endl; //6
+   cout << sizeof(2.112) << endl; // 8
 
    return 0;
 }
